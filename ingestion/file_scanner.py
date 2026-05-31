@@ -1,5 +1,3 @@
-import os
-
 def scan_repository(repo_path):
     files = []
 
