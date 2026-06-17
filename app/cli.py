@@ -1,6 +1,8 @@
 from ingestion.git_loader import clone_repo
 from ingestion.file_scanner import scan_repository, load_files
 
+from parser.ast_extractor import extract_ast_chunks
+
 
 def main():
 
@@ -13,6 +15,10 @@ def main():
     docs = load_files(files)
 
     print(f"Loaded {len(docs)} files")
+
+    chunks = extract_ast_chunks(docs)
+
+    print(chunks[:10])
 
 
 if __name__ == "__main__":
