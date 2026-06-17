@@ -175,15 +175,3 @@ def parse_python_file(source: str, filename: str) -> List[Dict[str, Any]]:
     return [asdict(chunk) for chunk in extractor.chunks]
 
 
-# ----------------------------
-# Example usage
-# ----------------------------
-
-if __name__ == "__main__":
-    with open("example.py", "r", encoding="utf-8") as f:
-        code = f.read()
-
-    chunks = parse_python_file(code, "example.py")
-
-    for c in chunks:
-        print(c)
