@@ -4,7 +4,8 @@ from ingestion.file_scanner import scan_repository, load_files
 from parser.ast_extractor import extract_ast_chunks
 from embeddings.semantic_formatter import chunk_to_text
 
-
+# Need to install !pip install sentence-transformers
+from sentence_transformers import SentenceTransformer
 
 def main():
 
@@ -23,9 +24,17 @@ def main():
     chunk_to_text(chunk)
     for chunk in chunks
 ]
+    model = SentenceTransformer("all-MiniLM-L6-v2")
 
-embedding_docs[:100]
+    embeddings = model.encode(
+    embedding_docs,
+    show_progress_bar=True,
+    convert_to_numpy=True
+)
 
+embeddings[:50]
+
+ 
 
 if __name__ == "__main__":
     main()
