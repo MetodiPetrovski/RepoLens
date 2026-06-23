@@ -1,3 +1,5 @@
+import faiss
+
 def search_repo(
     question,
     model,
