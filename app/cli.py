@@ -53,9 +53,9 @@ def main():
     embedding_docs
 )
 
-    for r in results:
-        print(r["score"])
-        print(r["text"][:500])
+for r in results:
+    print(r["score"])
+    print(r["text"][:500])
  
 
 if __name__ == "__main__":
