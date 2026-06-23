@@ -35,28 +35,27 @@ def main():
     convert_to_numpy=True
 )
 
-dimension = embeddings.shape[1]
+    dimension = embeddings.shape[1]
 
-index = faiss.IndexFlatIP(dimension)
+    index = faiss.IndexFlatIP(dimension)
 
-faiss.normalize_L2(embeddings)
+    faiss.normalize_L2(embeddings)
 
-index.add(embeddings)
+    index.add(embeddings)
 
-assert index.ntotal == len(embedding_docs)
-embeddings[:50]
+    assert index.ntotal == len(embedding_docs)
+    embeddings[:50]
 
-results = search_repo(
+    results = search_repo(
     "How are HTTP redirects handled?",
     model,
     index,
     embedding_docs
 )
 
-for r in results:
-    print(r["score"])
-    print(r["text"][:500])
-
+    for r in results:
+        print(r["score"])
+        print(r["text"][:500])
  
 
 if __name__ == "__main__":
