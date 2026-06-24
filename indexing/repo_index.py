@@ -1,4 +1,5 @@
-
+#!pip install sentence-transformers
+#!pip install faiss-cpu
 import faiss
 
 from sentence_transformers import SentenceTransformer
