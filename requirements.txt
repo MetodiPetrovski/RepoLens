@@ -7,13 +7,13 @@ groq
 #requirements for running it on google colab:
 
 #copying the repo
-%cd /content
+#%cd /content
 #!rm -rf RepoLens
 #!git clone https://github.com/MetodiPetrovski/RepoLens.git
 
-%cd RepoLens
-!pwd
-!ls
+#%cd RepoLens
+#!pwd
+#!ls
 
 #import sys
 #sys.path.append("/content/RepoLens")
