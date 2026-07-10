@@ -1,1 +1,53 @@
+[
+    {
+        "question": "Show and explain the function built_scope_context ",
+        "expected": "built_scope_context"
+    },
 
+    {
+        "question": "How are prompts rendered?",
+        "expected": "render_system_prompt"
+    },
+
+    {
+        "question": "How are session entries created?",
+        "expected": "build_session_entries"
+    },
+
+    {
+        "question": "How are settings loaded",
+        "expected": "load_settings"
+    },
+
+    {
+        "question": "Which function runs cli?",
+        "expected": "run_cli"
+    },
+
+    {
+        "question": "explain how agen id is set?",
+        "expected": "set_agent_id"
+    },
+
+    {
+        "question": "expalain how scan logging is setup",
+        "expected": "setup_scan_logging"
+    },
+
+    {
+        "question": "How does strix resource path function?",
+        "expected": "get_strix_resource_path"
+    },
+
+    {
+        "question": "explain the function _reset_loader_state",
+        "expected": "_reset_loader_state"
+    },
+
+    {
+        "question": "explain _stat_settings",
+        "expected": "_stat_settings"
+    }
+
+
+]
