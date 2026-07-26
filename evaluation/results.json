@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2026-07-26",
+    "experiment": "baseline",
+    "top1": 0.50,
+    "top3": 0.70,
+    "top5": 0.70
+  },
+  {
+    "date": "2026-07-26",
+    "experiment": "semantic_formatter_v2",
+    "top1": 0.60,
+    "top3": 0.70,
+    "top5": 0.80
+  }
+]
