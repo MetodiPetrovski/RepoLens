@@ -1,18 +1,35 @@
 import json
+from datetime import datetime
+
+from evaluation.repos import REPOSITORIES
+from indexing.repo_index import build_repo_index
 from retrieval.search import search_repo
 
 
-def evaluate(model, index, embedding_docs, benchmark_path):
+def evaluate_repository(
+    repo_name,
+    model,
+    index,
+    embedding_docs,
+    benchmark_path
+):
+    """
+    Evaluate one repository.
+    """
+
     with open(benchmark_path, "r", encoding="utf-8") as f:
         benchmark = json.load(f)
 
-    top1_correct = 0
-    top3_correct = 0
-    top5_correct = 0
+    top1 = 0
+    top3 = 0
+    top5 = 0
 
-    print("=" * 60)
-    print("RepoLens Evaluation")
-    print("=" * 60)
+    failures = []
+
+    print("\n" + "=" * 70)
+    print(f"Evaluating: {repo_name}")
+    print("=" * 70)
+
 
     for test in benchmark:
 
@@ -27,40 +44,175 @@ def evaluate(model, index, embedding_docs, benchmark_path):
             k=5
         )
 
+
         retrieved = [
-            r["text"].lower()
+            r["text"]
             for r in results
         ]
 
-        found = False
+        retrieved_lower = [
+            r.lower()
+            for r in retrieved
+        ]
 
-        if expected.lower() in retrieved[0]:
-            top1_correct += 1
-            top3_correct += 1
-            top5_correct += 1
-            found = True
 
-        elif any(expected.lower() in r for r in retrieved[:3]):
-            top3_correct += 1
-            top5_correct += 1
-            found = True
+        passed = False
 
-        elif any(expected.lower() in r for r in retrieved):
-            top5_correct += 1
-            found = True
 
-        print()
-        print(f"Question : {question}")
-        print(f"Expected : {expected}")
-        print("Result   :", "PASS" if found else "FAIL")
+        if expected.lower() in retrieved_lower[0]:
+            top1 += 1
+            top3 += 1
+            top5 += 1
+            passed = True
+
+
+        elif any(expected.lower() in r for r in retrieved_lower[:3]):
+            top3 += 1
+            top5 += 1
+            passed = True
+
+
+        elif any(expected.lower() in r for r in retrieved_lower):
+            top5 += 1
+            passed = True
+
+
+
+        if not passed:
+
+            failures.append(
+                {
+                    "question": question,
+                    "expected": expected,
+                    "retrieved": retrieved
+                }
+            )
+
+
+        print(
+            f"{'PASS' if passed else 'FAIL'} | {question}"
+        )
+
 
     total = len(benchmark)
 
-    print("\n" + "=" * 60)
-    print("Evaluation Summary")
-    print("=" * 60)
 
-    print(f"Questions : {total}")
-    print(f"Top-1 Accuracy : {top1_correct}/{total} ({100*top1_correct/total:.1f}%)")
-    print(f"Top-3 Accuracy : {top3_correct}/{total} ({100*top3_correct/total:.1f}%)")
-    print(f"Top-5 Accuracy : {top5_correct}/{total} ({100*top5_correct/total:.1f}%)")
+    return {
+        "repository": repo_name,
+        "questions": total,
+        "top1": top1,
+        "top3": top3,
+        "top5": top5,
+        "top1_accuracy": top1 / total,
+        "top3_accuracy": top3 / total,
+        "top5_accuracy": top5 / total,
+        "failures": failures
+    }
+
+
+
+def run_evaluation():
+
+    experiment_name = input(
+        "Experiment name: "
+    )
+
+    description = input(
+        "Experiment description: "
+    )
+
+
+    print("\nStarting evaluation...")
+    
+
+    experiment_results = {
+        "name": experiment_name,
+        "description": description,
+        "date": str(datetime.now()),
+        "repositories": []
+    }
+
+
+    overall_top1 = 0
+    overall_top3 = 0
+    overall_top5 = 0
+    overall_questions = 0
+
+
+
+    for repo in REPOSITORIES:
+
+        print(
+            f"\nLoading repository: {repo['name']}"
+        )
+
+
+        model, index, embedding_docs = build_repo_index(
+            repo["url"]
+        )
+
+
+        result = evaluate_repository(
+            repo["name"],
+            model,
+            index,
+            embedding_docs,
+            repo["benchmark"]
+        )
+
+
+        experiment_results["repositories"].append(
+            result
+        )
+
+
+        overall_top1 += result["top1"]
+        overall_top3 += result["top3"]
+        overall_top5 += result["top5"]
+
+        overall_questions += result["questions"]
+
+
+
+    experiment_results["overall"] = {
+        "questions": overall_questions,
+        "top1_accuracy": overall_top1 / overall_questions,
+        "top3_accuracy": overall_top3 / overall_questions,
+        "top5_accuracy": overall_top5 / overall_questions,
+    }
+
+
+
+    print("\n")
+    print("=" * 70)
+    print("FINAL EVALUATION SUMMARY")
+    print("=" * 70)
+
+
+    print(
+        f"Repositories evaluated: {len(REPOSITORIES)}"
+    )
+
+    print(
+        f"Questions: {overall_questions}"
+    )
+
+    print(
+        f"Top-1 Accuracy: {overall_top1/overall_questions:.2%}"
+    )
+
+    print(
+        f"Top-3 Accuracy: {overall_top3/overall_questions:.2%}"
+    )
+
+    print(
+        f"Top-5 Accuracy: {overall_top5/overall_questions:.2%}"
+    )
+
+
+    return experiment_results
+
+
+
+if __name__ == "__main__":
+    run_evaluation()
