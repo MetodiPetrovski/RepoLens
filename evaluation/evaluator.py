@@ -4,7 +4,7 @@ from datetime import datetime
 from evaluation.repos import REPOSITORIES
 from indexing.repo_index import build_repo_index
 from retrieval.search import search_repo
-
+from evaluation.history import save_evaluation
 
 def evaluate_repository(
     repo_name,
@@ -210,7 +210,8 @@ def run_evaluation():
         f"Top-5 Accuracy: {overall_top5/overall_questions:.2%}"
     )
 
-
+    save_evaluation(experiment_results)
+    
     return experiment_results
 
 
