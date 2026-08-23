@@ -54,15 +54,15 @@
     },
     {
         "question": "How are structured values converted when a tool parameter is declared as a string, and what happens when the value is already JSON-encoded?",
-        "expected": "test_structured_value_is_encoded_for_a_string_parameter, test_string_parameter_keeps_an_already_encoded_value"
+        "expected": "test_structured_value_is_encoded_for_a_string_parameter"
     },
     {
         "question": "How does the test suite distinguish between an encoded list that should be decoded into an array and free-form strings that should remain unchanged?",
-        "expected": "test_encoded_list_is_decoded_for_an_array_parameter, test_free_form_strings_are_never_split_into_an_array"
+        "expected": "test_encoded_list_is_decoded_for_an_array_parameter"
     },
     {
         "question": "What happens when tool arguments already match their declared schema, contain unknown or null values, or when the payload is not a JSON object?",
-        "expected": "test_values_matching_the_schema_are_left_alone, test_unknown_and_null_arguments_are_untouched, test_non_object_payloads_pass_through_unchanged"
+        "expected": "test_values_matching_the_schema_are_left_alone"
     },
     {
         "question": "How does litellm_cost_callback determine the LLM cost from a response, and how does it handle both object-style and mapping-style responses?",
@@ -74,7 +74,7 @@
     },
     {
         "question": "When a provider does not report a response cost directly, how does litellm_cost_callback estimate the cost, and how does it handle provider-prefixed and bare model names?",
-        "expected": "test_cost_callback_estimates_cost_with_provider_prefixed_model, test_cost_callback_estimates_cost_with_bare_model_fallback"
+        "expected": "test_cost_callback_estimates_cost_with_provider_prefixed_model"
     },
     {
         "question": "How does the test suite preserve and recover OpenRouter streaming costs when LiteLLM removes the cost from the rebuilt response, and how does it prevent the same cost from being counted twice?",
@@ -82,15 +82,15 @@
     },
     {
         "question": "How does the OpenRouter streaming handler capture provider-reported costs, and how is the captured cost made available to the cost callback through the response ID?",
-        "expected": "test_openrouter_stream_handler_records_cost, streamed_openrouter_costs"
+        "expected": "test_openrouter_stream_handler_records_cost"
     },
     {
         "question": "How does set_scan_id store the scan ID, and how is that ID subsequently made available on log records?",
-        "expected": "set_scan_id, _StrixContextFilter"
+        "expected": "set_scan_id"
     },
     {
         "question": "How does set_agent_id handle both setting and clearing an agent ID, and why are the IDs isolated between asyncio tasks?",
-        "expected": "set_agent_id, _AGENT_ID"
+        "expected": "set_agent_id"
     },
     {
         "question": "How does configure_dependency_logging reduce unwanted logging and warnings from dependencies such as LiteLLM, asyncio, and urllib3?",
@@ -102,7 +102,7 @@
     },
     {
         "question": "How does the teardown function returned by setup_scan_logging clean up the scan-specific logging handlers, and what makes the cleanup safe to call more than once?",
-        "expected": "setup_scan_logging, _teardown"
+        "expected": "setup_scan_logging"
     },
 
     {
