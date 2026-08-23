@@ -9,7 +9,7 @@ REPOSITORIES = [
   {
         "name": "strix",
         "url": "https://github.com/usestrix/strix.git",
-        "commit": "f528a6d26585b05bd55909394a8186fb851fc39a",
+        "commit": "1c499c5b2d788c553f0d276b389b2b424e483304",
         "benchmark": BASE_DIR / "benchmarks" / "strix.json",
     }
 ]
