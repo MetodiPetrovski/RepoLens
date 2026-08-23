@@ -1,52 +1,129 @@
 [
+ 
+
+    
     {
-        "question": "Show and explain the function built_scope_context ",
-        "expected": "built_scope_context"
+            "question": "What does the warm_up_llm function do before a scan begins, and what conditions cause it to display a model quality warning?",
+            "expected": "warm_up_llm"
+    },
+    {
+            "question": "How does the _provider_import_hint function determine which installation hint to provide when a provider dependency is missing?",
+            "expected": "_provider_import_hint"
+    },
+    {
+            "question": "What happens in _bootstrap_scan when warm_up_llm raises a ModelConnectionError?",
+            "expected": "_bootstrap_scan"
+    },
+    {
+            "question": "How does the main function handle the view and auth subcommands differently from a normal Strix scan?",
+            "expected": "main"
+    },
+    {
+            "question": "How does display_completion_message determine which completion message to display after a scan, and what information does it include?",
+            "expected": "display_completion_message"
     },
 
     {
-        "question": "How are prompts rendered?",
-        "expected": "render_system_prompt"
+        "question": "How does run_cli initialize the scan configuration before launching the Strix scan?",
+        "expected": "run_cli"
     },
-
     {
-        "question": "How are session entries created?",
-        "expected": "build_session_entries"
+        "question": "How does run_cli display the target information and output directory when a penetration test starts?",
+        "expected": "run_cli"
     },
-
     {
-        "question": "How are settings loaded",
-        "expected": "load_settings"
+        "question": "How does run_cli update the live status display while a penetration test is running?",
+        "expected": "create_live_status"
     },
-
     {
-        "question": "Which function runs cli?",
+        "question": "How does run_cli handle cleanup when the scan is interrupted by SIGINT, SIGTERM, or SIGHUP?",
+        "expected": "signal_handler"
+    },
+    {
+        "question": "How does run_cli launch the actual Strix scan, and which configuration and runtime parameters does it pass to run_strix_scan?",
         "expected": "run_cli"
     },
 
     {
-        "question": "explain how agent id is set?",
-        "expected": "set_agent_id"
+        "question": "What does the _capturing_tool helper create, and how does it capture the arguments passed to the wrapped tool?",
+        "expected": "_capturing_tool"
     },
-
     {
-        "question": "expalain how scan logging is setup",
+        "question": "How does the _roundtrip helper test argument coercion performed by the agent factory?",
+        "expected": "_roundtrip"
+    },
+    {
+        "question": "How are structured values converted when a tool parameter is declared as a string, and what happens when the value is already JSON-encoded?",
+        "expected": "test_structured_value_is_encoded_for_a_string_parameter, test_string_parameter_keeps_an_already_encoded_value"
+    },
+    {
+        "question": "How does the test suite distinguish between an encoded list that should be decoded into an array and free-form strings that should remain unchanged?",
+        "expected": "test_encoded_list_is_decoded_for_an_array_parameter, test_free_form_strings_are_never_split_into_an_array"
+    },
+    {
+        "question": "What happens when tool arguments already match their declared schema, contain unknown or null values, or when the payload is not a JSON object?",
+        "expected": "test_values_matching_the_schema_are_left_alone, test_unknown_and_null_arguments_are_untouched, test_non_object_payloads_pass_through_unchanged"
+    },
+    {
+        "question": "How does litellm_cost_callback determine the LLM cost from a response, and how does it handle both object-style and mapping-style responses?",
+        "expected": "litellm_cost_callback"
+    },
+    {
+        "question": "How does litellm_cost_callback handle BYOK responses differently from non-BYOK responses when an upstream inference cost is present?",
+        "expected": "litellm_cost_callback"
+    },
+    {
+        "question": "When a provider does not report a response cost directly, how does litellm_cost_callback estimate the cost, and how does it handle provider-prefixed and bare model names?",
+        "expected": "test_cost_callback_estimates_cost_with_provider_prefixed_model, test_cost_callback_estimates_cost_with_bare_model_fallback"
+    },
+    {
+        "question": "How does the test suite preserve and recover OpenRouter streaming costs when LiteLLM removes the cost from the rebuilt response, and how does it prevent the same cost from being counted twice?",
+        "expected": "test_cost_callback_recovers_streamed_openrouter_cost_by_response_id"
+    },
+    {
+        "question": "How does the OpenRouter streaming handler capture provider-reported costs, and how is the captured cost made available to the cost callback through the response ID?",
+        "expected": "test_openrouter_stream_handler_records_cost, streamed_openrouter_costs"
+    },
+    {
+        "question": "How does set_scan_id store the scan ID, and how is that ID subsequently made available on log records?",
+        "expected": "set_scan_id, _StrixContextFilter"
+    },
+    {
+        "question": "How does set_agent_id handle both setting and clearing an agent ID, and why are the IDs isolated between asyncio tasks?",
+        "expected": "set_agent_id, _AGENT_ID"
+    },
+    {
+        "question": "How does configure_dependency_logging reduce unwanted logging and warnings from dependencies such as LiteLLM, asyncio, and urllib3?",
+        "expected": "configure_dependency_logging"
+    },
+    {
+        "question": "How does setup_scan_logging configure the file and stream handlers, including their log levels, formatting, filters, and the loggers to which they are attached?",
         "expected": "setup_scan_logging"
     },
-
     {
-        "question": "How does strix resource path function?",
-        "expected": "get_strix_resource_path"
+        "question": "How does the teardown function returned by setup_scan_logging clean up the scan-specific logging handlers, and what makes the cleanup safe to call more than once?",
+        "expected": "setup_scan_logging, _teardown"
     },
 
     {
-        "question": "explain the function _reset_loader_state",
-        "expected": "_reset_loader_state"
+        "question": "How does preflight_model_connection verify that the configured model route is available before a scan, and what request settings does it use for the test request?",
+        "expected": "preflight_model_connection"
     },
-
     {
-        "question": "explain _stat_settings",
-        "expected": "_stat_settings"
+        "question": "How does build_targets_info process target and target-list inputs, determine their types, and prepare the resulting target information for a scan?",
+        "expected": "build_targets_info"
+    },
+    {
+        "question": "How does prepare_run handle repository targets from the initial target information through repository cloning, local source collection, diff-scope resolution, and persistence of the run state?",
+        "expected": "prepare_run"
+    },
+    {
+        "question": "How does attach_workspace_mount expose a workspace directory to the sandbox without treating it as an authorized scan target, and why is it attached only after diff-scope resolution?",
+        "expected": "attach_workspace_mount"
+    },
+    {
+        "question": "What information does telemetry_start record when a scan begins, and how does it determine the model, authentication mode, scan mode, whitebox status, interactivity, and presence of user instructions?",
+        "expected": "telemetry_start"
     }
 
 
