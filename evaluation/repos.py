@@ -15,7 +15,7 @@ REPOSITORIES = [
 
   {   "name": "requests",
       "url": "https://github.com/psf/requests.git",
-      "commit": "8f8b212de8c2129d7954c6cd373762880375620a",
+      "commit": "d38495c90653496c3c81f31e8f9bef162b400b44",
       "benchmark": BASE_DIR / "benchmarks" / "requests.json",
 
 
