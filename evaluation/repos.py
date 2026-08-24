@@ -19,5 +19,13 @@ REPOSITORIES = [
       "benchmark": BASE_DIR / "benchmarks" / "requests.json",
 
 
+    },
+
+  {   "name": "click",
+      "url": "https://github.com/pallets/click.git",
+      "commit": "2c8cd3ac958a7eb316d67f2d316c27086c4c0369",
+      "benchmark": BASE_DIR / "benchmarks" / "click.json",
+
+
     }
 ]

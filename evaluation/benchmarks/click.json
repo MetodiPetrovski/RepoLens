@@ -1,1 +1,124 @@
+[
+    {
+      "question": "What function converts a Windows console input byte sequence into text using the console's input code page?",
+      "expected": "_get_text"
+    },
+    {
+      "question": "What function converts text into a byte sequence using the Windows console's output code page?",
+      "expected": "_get_bytes"
+    },
+    {
+      "question": "What class wraps a Windows console stream and provides text-oriented read, write, and flush operations?",
+      "expected": "_WindowsConsoleStream"
+    },
+    {
+      "question": "What function creates a text stream wrapper around a Windows console file descriptor?",
+      "expected": "_wrap_stream"
+    },
+    {
+      "question": "What function replaces the standard input, output, or error streams with Windows console-aware wrappers when appropriate?",
+      "expected": "console_init"
+    },
 
+    {
+        "question": "What helper function formats a sequence of parameter hints by representing each item and joining them with ' / '?",
+        "expected": "_join_param_hints"
+      },
+      {
+        "question": "What helper function builds a localized 'Did you mean' message from a list of possible values?",
+        "expected": "_format_possibilities"
+      },
+      {
+        "question": "Which exception class represents a general error that Click can catch and display to the user, including a configurable exit code and formatted message?",
+        "expected": "ClickException"
+      },
+      {
+        "question": "Which exception class represents a command-line usage error and changes the default exit code to 2 while optionally retaining the command context?",
+        "expected": "UsageError"
+      },
+      {
+        "question": "Which exception class specializes BadParameter to represent a required option or argument that was not supplied?",
+        "expected": "MissingParameter"
+      },
+
+      {
+        "question": "How does prompt handle user input when hide_input is enabled?",
+        "expected": "prompt"
+      },
+      {
+        "question": "How does prompt process a value that fails type conversion?",
+        "expected": "prompt"
+      },
+      {
+        "question": "How does confirm determine the boolean result from the user's response?",
+        "expected": "confirm"
+      },
+      {
+        "question": "How does echo_via_pager handle a generator function passed as its input?",
+        "expected": "echo_via_pager"
+      },
+      {
+        "question": "How does progressbar create the progress bar object used by callers?",
+        "expected": "progressbar"
+      },
+      {
+        "question": "Under what condition does clear avoid modifying the terminal?",
+        "expected": "clear"
+      },
+      {
+        "question": "How does style convert a color value into an ANSI escape sequence?",
+        "expected": "style"
+      },
+      {
+        "question": "How does unstyle remove ANSI styling from a string?",
+        "expected": "unstyle"
+      },
+      {
+        "question": "What happens when edit is given a filename instead of text?",
+        "expected": "edit"
+      },
+      {
+        "question": "How does getchar obtain its implementation when the cached _getchar function has not been initialized?",
+        "expected": "getchar"
+      },
+      {
+        "question": "How does _unpack_args handle an argument specification with nargs set to -1?",
+        "expected": "_unpack_args"
+      },
+      {
+        "question": "How does _split_opt distinguish a short option from a long option?",
+        "expected": "_split_opt"
+      },
+      {
+        "question": "How does _normalize_opt apply a context's token normalization function to an option?",
+        "expected": "_normalize_opt"
+      },
+      {
+        "question": "How does _Option.process store values for an option using the append action?",
+        "expected": "_Option"
+      },
+      {
+        "question": "How does _Argument.process handle missing values for a multi-value argument?",
+        "expected": "_Argument"
+      },
+      {
+        "question": "How does add_option register an option's short and long forms with the parser?",
+        "expected": "add_option"
+      },
+      {
+        "question": "How does parse_args handle a UsageError when resilient parsing is enabled?",
+        "expected": "parse_args"
+      },
+      {
+        "question": "How does _match_long_opt handle an option that is given an explicit value?",
+        "expected": "_match_long_opt"
+      },
+      {
+        "question": "How does _match_short_opt process multiple short options combined into one argument?",
+        "expected": "_match_short_opt"
+      },
+      {
+        "question": "How does _get_value_from_state handle an option that allows its value to be omitted?",
+        "expected": "_get_value_from_state"
+      }
+  ]
