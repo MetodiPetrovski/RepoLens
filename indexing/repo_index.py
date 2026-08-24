@@ -10,11 +10,11 @@ from parser.ast_extractor import extract_ast_chunks
 from embeddings.semantic_formatter import chunk_to_text
 
 
-def build_repo_index(url, commit=None):
+def build_repo_index(url, commit=None, repo_name=None):
 
     repo_path = clone_repo(
         url,
-        "temp_repo",
+        f"temp_repo_{repo_name}",
         commit=commit
     )
 

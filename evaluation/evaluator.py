@@ -149,7 +149,8 @@ def run_evaluation():
 
         model, index, embedding_docs = build_repo_index(
             repo["url"],
-            commit=repo.get("commit")
+            commit=repo.get("commit"),
+            repo_name=repo["name"]
         )
 
 
