@@ -1,0 +1,124 @@
+[
+    {
+        "question": "What is the base interface that custom authentication mechanisms in Requests are expected to implement?",
+        "expected": "AuthBase"
+    },
+    {
+        "question": "How does HTTPBasicAuth attach username and password credentials to an outgoing request?",
+        "expected": "HTTPBasicAuth"
+    },
+    {
+        "question": "How does Requests apply authentication credentials specifically to a proxy request rather than the target server?",
+        "expected": "HTTPProxyAuth"
+    },
+    {
+        "question": "How does HTTP Digest authentication respond to a server's authentication challenge and retry the request?",
+        "expected": "handle_401"
+    },
+    {
+        "question": "How does Requests construct the Authorization value used for HTTP Basic authentication from the supplied credentials?",
+        "expected": "_basic_auth_str"
+    },
+    {
+        "question": "What class provides the main dictionary-like interface for storing and accessing HTTP cookies in Requests?",
+        "expected": "RequestsCookieJar"
+    },
+    {
+        "question": "How does Requests convert a CookieJar into a RequestsCookieJar while preserving the cookies it contains?",
+        "expected": "cookiejar_from_dict"
+    },
+    {
+        "question": "How does Requests extract cookies from an HTTP response and add them to an existing cookie jar?",
+        "expected": "extract_cookies_to_jar"
+    },
+    {
+        "question": "How does Requests create a Cookie object from a cookie dictionary while handling attributes such as domain, path, and expiration?",
+        "expected": "create_cookie"
+    },
+    {
+        "question": "How does Requests merge cookies from multiple sources while determining which values take precedence when the same cookie appears more than once?",
+        "expected": "merge_cookies"
+    },
+
+    {
+        "question": "How does Requests encode parameters into a query string or request body while preserving the structure of mappings, sequences, and file-like values?",
+        "expected": "_encode_params"
+    },
+    {
+        "question": "How does a Request object turn its user-supplied method, URL, headers, cookies, body, authentication, and hooks into a fully prepared HTTP request?",
+        "expected": "prepare"
+    },
+    {
+        "question": "How does PreparedRequest construct and validate the URL that will actually be sent to the server, including handling schemes, authentication, ports, paths, and query parameters?",
+        "expected": "prepare_url"
+    },
+    {
+        "question": "How does PreparedRequest prepare different kinds of request bodies, including form data, JSON, files, and multipart uploads, while setting the appropriate headers?",
+        "expected": "prepare_body"
+    },
+    {
+        "question": "How does a Response object expose the downloaded content as text while determining an appropriate character encoding when one has not already been specified?",
+        "expected": "text"
+    },
+
+    {
+        "question": "How does Requests determine whether an object is a stream suitable for use as request data?",
+        "expected": "is_stream"
+    },
+    {
+        "question": "How does Requests parse a URL into its individual components such as scheme, host, port, path, and query?",
+        "expected": "parse_url"
+    },
+    {
+        "question": "How does Requests add a default HTTP scheme to a URL when the URL does not explicitly specify one?",
+        "expected": "prepend_scheme_if_needed"
+    },
+    {
+        "question": "How does Requests calculate the length of different types of request bodies, including strings, bytes, files, and seekable objects?",
+        "expected": "super_len"
+    },
+    {
+        "question": "How does Requests extract username and password credentials embedded in a URL?",
+        "expected": "get_auth_from_url"
+    },
+    {
+        "question": "How does Requests convert a CookieJar into a regular dictionary containing the cookie names and values?",
+        "expected": "dict_from_cookiejar"
+    },
+    {
+        "question": "How does Requests convert a dictionary of cookie names and values into a CookieJar?",
+        "expected": "cookiejar_from_dict"
+    },
+    {
+        "question": "How does Requests determine whether proxy settings should be bypassed for a given URL, taking the configured bypass list and environment into account?",
+        "expected": "should_bypass_proxies"
+    },
+    {
+        "question": "How does Requests resolve environment variables and configuration to determine which proxies should be used for a particular URL?",
+        "expected": "get_environ_proxies"
+    },
+    {
+        "question": "How does Requests remove unnecessary percent-encoding from the unreserved characters of a URI while preserving reserved characters?",
+        "expected": "unquote_unreserved"
+    },
+    {
+        "question": "How does the main Requests API function create a temporary session, send the requested HTTP method with the supplied arguments, and ensure that the session is closed afterward?",
+        "expected": "request"
+    },
+    {
+        "question": "How does the GET convenience function delegate the request while passing query parameters and other optional arguments through to the underlying API?",
+        "expected": "get"
+    },
+    {
+        "question": "How does the HEAD convenience function differ from the other HTTP method wrappers with regard to redirect handling?",
+        "expected": "head"
+    },
+    {
+        "question": "How does the POST convenience function pass both request body data and JSON data to the underlying request implementation?",
+        "expected": "post"
+    },
+    {
+        "question": "How does the DELETE convenience function construct a DELETE request while forwarding arbitrary request options?",
+        "expected": "delete"
+    }
+]
